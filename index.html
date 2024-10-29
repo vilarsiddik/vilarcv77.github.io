@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <!-- =====BOX ICONS===== -->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+        <title>Vilar</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            }
+    
+            .container {
+                max-width: 1200px;
+                margin: 50px auto;
+                padding: 20px;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+    
+            .section {
+                width: 100%;
+            }
+    
+            .section h2 {
+                font-size: 2.5rem;
+                color: #333;
+                margin-bottom: 40px;
+            }
+    
+            .timeline-item {
+                position: relative;
+                padding-left: 60px;
+                margin-bottom: 40px;
+            }
+    
+            .year-circle {
+                position: absolute;
+                left: 0;
+                width: 45px;
+                height: 45px;
+                background-color: #626F47;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-weight: bold;
+            }
+    
+            .timeline-content h3 {
+                font-size: 1.3rem;
+                color: #333;
+                margin-bottom: 5px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+    
+            .timeline-content .date {
+                color: #666;
+                font-size: 0.9rem;
+                margin-left: 10px;
+                font-weight: normal;
+            }
+    
+            .timeline-content p {
+                color: #666;
+                margin: 5px 0;
+                font-size: 0.95rem;
+            }
+    
+            .timeline-content .subtitle {
+                color: #888;
+                font-size: 0.9rem;
+            }
+    
+            @media (max-width: 768px) {
+                .container {
+                    grid-template-columns: 1fr;
+                    gap: 20px;
+                }
+            }
+            .footer__copy {
+            font-size: var(--smaller-font-size);
+            margin-top: 0.5rem;
+            }
+            .section__header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section__title {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--title-color, #333);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.section__subtitle {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--text-color-light, #666);
+}
+
+.achievements__container {
+    padding: 2rem 0;
+    position: relative;
+}
+
+.achievements__slider {
+    display: flex;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.slider__content {
+    display: flex;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    margin: 0 3rem;
+}
+
+.achievement__img {
+    min-width: 300px;
+    height: 200px;
+    object-fit: cover;
+    margin: 0 1rem;
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.achievement__img:hover {
+    transform: translateY(-5px);
+}
+
+.slider__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.slider__btn:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.slider__btn--prev {
+    left: 0;
+}
+
+.slider__btn--next {
+    right: 0;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .section__title {
+        font-size: 1.5rem;
+    }
+    
+    .achievement__img {
+        min-width: 250px;
+        height: 160px;
+    }
+}
+.title__underline {
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: #4CAF50; /* Warna hijau seperti pada gambar */
+    margin-top: 5px;
+    align-content: center;
+}
+        </style>
+    </head>
+    <body>
+        
+        <!--===== HEADER =====-->
+        <header class="l-header">
+            <nav class="nav bd-grid">
+                <div>
+                    <a href="#" class="nav__logo">PORTOFOLIO WEB</a>
+                </div>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
+                        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                        <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
+                        <li class="nav__item"><a href="#achievements" class="nav__link">Achievements</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </nav>
+        </header>
+
+        <main class="l-main">
+            <!--===== HOME =====-->
+            
+            <section class="home bd-grid" id="home">
+                <div class="home__data">
+                    <div class="typed">
+                    <h1 class="home__title">Hey folks,<br>I'am <span class="home__title-color">Vilar Siddik <br>Avriansari</span><br><span class="animate"></span></h1>
+                </div>
+                <p class="about__text">0813-6925-4609 | siddikvilar@gmail.com</p>
+                </div>
+
+                <div class="home__social">
+                    <a href="https://www.instagram.com/vilrsddk/" class="home__social-icon"><i class='bx bxl-instagram'></i></a>
+                    <a href="https://github.com/vilarsiddik" class="home__social-icon"><i class='bx bxl-github' ></i></a>
+                    <a href="https://www.linkedin.com/in/vilar-siddik-5926b1314?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="home__social-icon"><i class='bx bxl-linkedin' ></i></a>
+                </div>
+        
+
+                <div class="home__img" data-tilt>    
+                    <img src="assets/img/vilarm.png" alt="">
+                </div>
+            </section>
+
+            <!--===== ABOUT =====-->
+            <section class="about section " id="about">
+                <h2 class="section-title">About</h2>
+
+                <div class="about__container bd-grid">
+                    <div class="about__img">
+                        <img src="assets/img/vilarr.jpg" alt="">
+                    </div>
+                    
+                    <div> 
+                        <h2 class="about__subtitle">I'am Vilar Siddik Avriansari</h2>
+                        <p class="about__text">I have years of experience in IT, I have mastered several programming languages. I have also successfully created websites. 
+                            I have spent most of my time in the design field such as frontend & backend development. I can help you with the best advice and ideas that we can move forward with. 
+                            With me, you are not forced to accept anything. I give you various options that we can work on together.
+                            </p>           
+                    </div>            
+                </div>
+            </section>
+            <div class="container">
+                <!-- Experiences Section -->
+        <div class="section">
+            <h2>Experiences</h2>
+            
+            <div class="timeline-item">
+                <div class="year-circle">2023</div>
+                <div class="timeline-content">
+                    <h3>Web Developer <span class="date">2023</span></h3>
+                    <p>Sales Website</p>
+                </div>
+            </div>
+         
+            <div class="timeline-item">
+                <div class="year-circle">2020</div>
+                <div class="timeline-content">
+                    <h3>Freelance <span class="date">2020 - 2021</span></h3>
+                 
+                </div>
+            </div>
+        </div>
+        <!-- Educations Section -->
+        <div class="section">
+            <h2>Educations</h2>
+            
+            <div class="timeline-item">
+                <div class="year-circle">2024</div>
+                <div class="timeline-content">
+                    <h3>Universitas Muhammadiyah Sumatera Utara <span class="date">NOW</span></h3>
+                    <p>Information System Major</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="year-circle">2021</div>
+                <div class="timeline-content">
+                    <h3>Tritech Informatics Private Vocational School Medan (Software Engineering) <span class="date">2021 - 2024</span></h3>
+                    <p>Software Engineering Department</p>
+                </div>
+            </div>
+        </div>                    
+            </div>
+
+            <!--===== SKILLS =====-->
+            <section class="skills section" id="skills">
+                <h2 class="section-title">Skills</h2>
+
+                <div class="skills__container bd-grid">          
+                    <div>
+                        <h2 class="skills__subtitle">Profesional Skills</h2>
+                        <p class="skills__text">Berikut adalah skill yang saya kuasai</p>
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='bx bxl-html5 skills__icon'></i>
+                                <span class="skills__name">HTML5</span>
+                            </div>
+                            <div class="skills__bar skills__html">
+
+                            </div>
+                            
+                        </div>
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='bx bxl-css3 skills__icon'></i>
+                                <span class="skills__name">CSS3</span>
+                            </div>
+                            <div class="skills__bar skills__css">
+                                
+                            </div>
+                            
+                        </div>
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='bx bxs-data skills__icon' ></i>
+                                <span class="skills__name">MYSQL</span>
+                            </div>
+                            <div class="skills__bar skills__js">
+                                
+                            </div>
+                           
+                        </div>
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='fab fa-php fa-lg skills__icon'style="color:#88C273;"></i>
+                                <span class="skills__name">PHP</span>
+                            </div>
+                            <div class="skills__bar skills__php">
+                                
+                            </div>
+                           
+                        </div>
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='bx bx-window-alt skills__icon'style="color:#88C273;"></i>
+                                <span class="skills__name">VB.NET</span>
+                            </div>
+                            <div class="skills__bar skills__laravel">  
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div>              
+                        <img src="assets/img/coding.jpg" alt="" class="skills__img">
+                    </div>
+                </div>
+            </section>
+            <!-- Achievements Section -->
+<section class="achievements section" id="achievements">
+    <h2 class="section-title">Achievements</h2>
+    <div class="achievements__container">
+        <div class="achievements__slider">
+            <!-- Slider Navigation Buttons -->
+            <button class="slider__btn slider__btn--prev" onclick="slideImages('prev')">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="slider__content">
+                <!-- Add your achievement images here -->
+                <img src="assets/img/Sertifvil.jpg" alt="Achievement 1" class="achievement__img">
+                <img src="achievement2.jpg" alt="Achievement 2" class="achievement__img">
+                <img src="achievement3.jpg" alt="Achievement 3" class="achievement__img">
+                <img src="achievement4.jpg" alt="Achievement 4" class="achievement__img">
+            </div>
+
+            <button class="slider__btn slider__btn--next" onclick="slideImages('next')">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+        </main>
+
+        <!--===== FOOTER =====-->
+        <footer class="footer">
+            
+            <div class="footer__social">
+                <a href="https://github.com/vilarsiddik" class="footer__icon"><i class='bx bxl-github' ></i></a>
+                <a href="https://www.instagram.com/vilrsddk/" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
+                <a href="https://www.linkedin.com/in/vilar-siddik-5926b1314?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="footer__icon"><i class='bx bxl-linkedin' ></i></a>
+            </div>
+            <p class="footer__copy">Copyright &#169; 2024 Vilar Siddik Avriansari. All right reserved</p>
+        </footer>
+
+
+        <!--===== SCROLL REVEAL =====-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--===== MAIN JS =====-->
+        <script src="assets/js/main.js"></script>
+        <script src="assets/js/typed.js"></script>
+        <script src="assets/js/type.js"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
+  <script src="assets/js/tilt.js"></script>
+  <script>
+    function slideImages(direction) {
+        const sliderContent = document.querySelector('.slider__content');
+        const slideWidth = document.querySelector('.achievement__img').offsetWidth + 32; // Image width + margins
+        
+        if (direction === 'next') {
+            sliderContent.scrollLeft += slideWidth;
+        } else {
+            sliderContent.scrollLeft -= slideWidth;
+        }
+    }
+    </script>
+    </body>
+</html>
